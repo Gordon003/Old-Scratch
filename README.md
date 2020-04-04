@@ -6,7 +6,7 @@ An library that helps primary/high school students progress from Scratch to Pyth
 ```python
 # Set up screen size 800 x 600
 pygame = Pygame(800,600)
-```*
+```
 
 2. Game Title
 ```python
