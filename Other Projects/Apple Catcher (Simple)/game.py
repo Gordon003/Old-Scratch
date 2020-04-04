@@ -2,55 +2,55 @@ import random
 from manager import *
 
 # Start pygame
-my_pygame = Pygame(800, 600)
-my_pygame.setGameTitle("Apple Catcher Game")
-my_pygame.changeBackgroundImage("background.jpg")
+pygame = Pygame(800, 600)
+pygame.set_game_title("Apple Catcher Game")
+pygame.set_background_image("background.jpg")
 
 # Variable
 score = 0
 
 # Basket
-basket = my_pygame.addSprite('basket.png', 15)
-basket.goTo(0,-150)
+basket = pygame.add_sprite('basket.png', 15)
+basket.go_to(0,-150)
 
 # Apple
-apple = my_pygame.addSprite('apple.png', 5)
-apple.goTo(random.randint(-300,300),300)
+apple = pygame.add_sprite('apple.png', 5)
+apple.go_to(random.randint(-300,300),300)
 
 # Start Game
-my_pygame.startGame()
+pygame.start_game()
 
 done = False
 while not done:
 	# Check User input
-	my_pygame.checkEvent()
-	done = my_pygame.checkQuit()
+	pygame.check_event()
+	done = pygame.check_quit()
 
 	# Move Basket
 	# Shark going left and right
-	if my_pygame.keyHold(pygame.K_LEFT):
-		basket.changeX(-5)
-	if my_pygame.keyHold(pygame.K_RIGHT):
-		basket.changeX(5)
-	if my_pygame.keyReleased(pygame.K_LEFT) or my_pygame.keyReleased(pygame.K_RIGHT):
-		basket.changeX(0)
+	if pygame.key_hold("left"):
+		basket.change_x(-5)
+	if pygame.key_hold("right"):
+		basket.change_x(5)
+	if pygame.key_released("left") or pygame.key_released("right"):
+		basket.change_x(0)
 
 	# Apple Drop
-	apple.changeY(-5)
+	apple.change_y(-5)
 
 	if basket.touch(apple):
 		score += 1
-		apple.goTo(random.randint(-300,300),300)
+		apple.go_to(random.randint(-300,300),300)
 
 	# Reset apple if drop
-	if apple.getY() < -200:
-		apple.goTo(random.randint(-300,300),300)
+	if apple.get_y() < -200:
+		apple.go_to(random.randint(-300,300),300)
 
 	# Write Score
-	my_pygame.writeText("Score: " + str(score), 20, 320, 250)
+	pygame.write_text("Score: " + str(score), 20, 320, 250)
 
 	# Update All Sprites
-	my_pygame.updateGame()
+	pygame.update_game()
 
 # Quit Game
-my_pygame.quitGame()
+pygame.quit_game()

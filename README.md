@@ -1,8 +1,17 @@
 # Scratch-To-Python
-An library that helps primary/high school students progress from Scratch to Python much more easily
+A library that helps primary/high school students progress from Scratch to Python much more easily.
+
+Perfect for advanced Scratch students who want to make game in actual programming language and learn good syntax and style.
+
+Developed by Gordon since January 2020.
 
 ## Basic Game Design Command
-- Make new **Game Manager** while setting screen </li>
+- **To Compile and Run game**
+```python
+python game.py
+```
+
+- Make new **Game Manager** while setting screen
 ```python
 # Set up screen size 800 x 600
 pygame = Pygame(800,600)
@@ -21,6 +30,13 @@ my_sprite = pygame.add_sprite('sprite1.png', 50)
 - New **Scene** <br/>
 ```python
 pygame.new_scene()
+```
+
+- Write **text** on the Game Screen
+```python
+# 20 - Font size
+# (320, 250) - Position of Text in Game Screen
+pygame.write_text("Score", 20, 320, 250)
 ```
 
 ## Motion

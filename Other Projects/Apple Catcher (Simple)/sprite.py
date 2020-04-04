@@ -43,97 +43,10 @@ class Sprite(pygame.sprite.Sprite):
 		self.cooldown = 0
 
 		self.text = ""
-		self.speechBubble = SpeechBubble(self)
+		self.SpeechBubble = SpeechBubble(self)
 
-	def changeX(self, amount):
-		self.x_change = amount
-
-	def changeY(self, amount):
-		self.y_change = -1 * amount
-
-	def changeSize(self, amount):
-		self.scale += amount
-
-	def getDirection(self):
-		return self.rotation + 90
-
-	def getSize(self):
-		return self.scale
-
-	def getX(self):
-		return int(self.x - self.screen_width/2 + self.width/2)
-
-	def getY(self):
-		return int(self.screen_height/2 - self.height/2 - self.y)
-
-	def goTo(self, x, y):
-		self.x = self.screen_width/2 - self.width/2 + x
-		self.y = self.screen_height/2 - self.height/2 - y
-
-	def goToRandomPosition(self):
-		self.x = random.randint(int(self.width/2), int(self.screen_width-(self.width/2)))
-		self.y = random.randint(int(self.height/2), int(self.screen_height-(self.height/2)))
-
-	def hide(self):
-		self.visible = False
-
-	def move(self, amount):
-		self.x += amount * math.cos(math.radians(self.rotation))
-		self.y -= amount * math.sin(math.radians(self.rotation))
-
-	def mouseClickedOnSprite(self):
-
-		for event in self.game_Manager.events_list:
-			if event.type == pygame.MOUSEBUTTONDOWN:
-				pos = pygame.mouse.get_pos()
-				if self.rect.collidepoint(pygame.mouse.get_pos()):
-					return True
-
-		return False
-
-	def mouseHoveredOnSprite(self):
-		if self.rect.collidepoint(pygame.mouse.get_pos()): return True
-		return False
-
-	def pointTowardMouse(self):
-		mouse_x, mouse_y = pygame.mouse.get_pos()
-		rel_x, rel_y = mouse_x - self.x, mouse_y - self.y
-		self.rotation = (180 / math.pi) * -math.atan2(rel_y, rel_x)
-
-	def pointTowardSprite(self, otherSprite):
-		diff_x = otherSprite.x - self.x
-		diff_y = self.y - otherSprite.y
-		self.rotation = math.degrees(math.atan2(diff_y,diff_x))
-
-
-	def say(self, text):
-		self.text = text
-
-	def setDirection(self, angle):
-		self.rotation = angle - 90
-
-	def setRotation(self, angle):
-		self.rotation = angle - 90
-
-	def setRotationStyle(self, rotation_style):
-		self.rotation_style = rotation_style
-
-	def setSize(self, scale):
-		self.scale = scale
-		self.height = int(scale * height / 100)
-		self.width = int(scale * width / 100)
-		self.switchCostume(self.image_list)
-
-	def setX(self, amount):
-		self.x = self.screen_width/2 - self.width/2 + amount
-
-	def setY(self, amount):
-		self.y = self.screen_height/2 - self.height/2 - amount
-
-	def show(self):
-		self.visible = True
-
-	def stopOnEdge(self):
+	# If on edge, bounce
+	def bounce_on_edge(self):
 
 		if self.x + self.width > self.screen_width:
 			self.x = self.screen_width - self.width
@@ -145,7 +58,114 @@ class Sprite(pygame.sprite.Sprite):
 		elif self.y < 0:
 			self.y = 0
 
-	def switchCostume(self, imageLink):
+	# Change X
+	def change_x(self, amount):
+		self.x_change = amount
+
+	# Change Y
+	def change_y(self, amount):
+		self.y_change = -1 * amount
+
+	# Change size
+	def change_size(self, amount):
+		self.scale += amount
+
+	# Get Direction
+	def get_direction(self):
+		return self.rotation + 90
+
+	# Get Size
+	def get_size(self):
+		return self.scale
+
+	# Get X
+	def get_x(self):
+		return int(self.x - self.screen_width/2 + self.width/2)
+
+	# Get Y
+	def get_y(self):
+		return int(self.screen_height/2 - self.height/2 - self.y)
+
+	# Go to specific position
+	def go_to(self, x, y):
+		self.x = self.screen_width/2 - self.width/2 + x
+		self.y = self.screen_height/2 - self.height/2 - y
+
+	# Go to random position
+	def go_to_random_position(self):
+		self.x = random.randint(int(self.width/2), int(self.screen_width-(self.width/2)))
+		self.y = random.randint(int(self.height/2), int(self.screen_height-(self.height/2)))
+
+	# Hide sprite
+	def hide(self):
+		self.visible = False
+
+	# Move sprite
+	def move(self, amount):
+		self.x += amount * math.cos(math.radians(self.rotation))
+		self.y -= amount * math.sin(math.radians(self.rotation))
+
+	# Check if Mouse clicked on Sprite
+	def mouse_clicked_on_sprite(self):
+
+		for event in self.game_Manager.events_list:
+			if event.type == pygame.MOUSEBUTTONDOWN:
+				pos = pygame.mouse.get_pos()
+				if self.rect.collidepoint(pygame.mouse.get_pos()):
+					return True
+
+		return False
+
+	# Check if Mouse hovered on Sprite
+	def mouse_hovered_on_sprite(self):
+		if self.rect.collidepoint(pygame.mouse.get_pos()): return True
+		return False
+
+	# Point toward Mouse
+	def point_toward_mouse(self):
+		mouse_x, mouse_y = pygame.mouse.get_pos()
+		rel_x, rel_y = mouse_x - self.x, mouse_y - self.y
+		self.rotation = (180 / math.pi) * -math.atan2(rel_y, rel_x)
+
+	# Point toward Sprite
+	def point_toward_sprite(self, otherSprite):
+		diff_x = otherSprite.x - self.x
+		diff_y = self.y - otherSprite.y
+		self.rotation = math.degrees(math.atan2(diff_y,diff_x))
+
+	# Say
+	def say(self, text):
+		self.text = text
+
+	# Set Direction
+	def set_direction(self, angle):
+		self.rotation = angle - 90
+
+	# Set Rotation
+	def set_rotation_style(self, rotation_style):
+		self.rotation_style = rotation_style
+
+	# Set size
+	def set_size(self, scale):
+		self.scale = scale
+		self.height = int(scale * height / 100)
+		self.width = int(scale * width / 100)
+		self.switchCostume(self.image_list)
+
+	# Set X position
+	def set_x(self, amount):
+		self.x = self.screen_width/2 - self.width/2 + amount
+
+	# Set Y position
+	def set_y(self, amount):
+		self.y = self.screen_height/2 - self.height/2 - amount
+
+	# Show sprite
+	def show(self):
+		self.visible = True
+
+	# Switch Costume
+	def switch_costume(self, imageLink):
 		if imageLink not in self.image_link_list:
 			self.image = pygame.image.load("images/" + imageLink)
 			self.image = pygame.transform.scale(self.image, (self.width, self.height))
@@ -154,16 +174,20 @@ class Sprite(pygame.sprite.Sprite):
 		else:
 			self.image = self.image_list[self.image_link_list.index(imageLink)]
 
-	def touch(self, otherSprite):
-		return pygame.sprite.collide_rect(self, otherSprite)
+	# Touch Other Sprite
+	def touch(self, other_sprite):
+		return pygame.sprite.collide_rect(self, other_sprite)
 
-	def turnLeft(self,angle):
+	# Turn Left
+	def turn_left(self,angle):
 		self.rotation += angle
 
-	def turnRight(self,angle):
+	# Turn Right
+	def turn_right(self,angle):
 		self.rotation -= angle
 
-	def updateMovement(self):
+	# Update Movement
+	def update_movement(self):
 
 		now = pygame.time.get_ticks()
 		if not self.waiting or (self.waiting and now - self.last >= self.cooldown):
@@ -174,15 +198,16 @@ class Sprite(pygame.sprite.Sprite):
 			self.last = now
 			self.waiting = False
 
-		self.speechBubble.updateMovement()
+		self.SpeechBubble.update_movement()
 
+	# Wait
 	def wait(self, seconds):
 		if not self.waiting:
 			self.last = pygame.time.get_ticks()
 			self.cooldown = seconds * 1000
 			self.waiting = True
 
-
+# SPEECH BUBBLE
 class SpeechBubble(pygame.sprite.Sprite):
 	def __init__(self, parentSprite):
 		global screen_height, screen_width
@@ -197,13 +222,13 @@ class SpeechBubble(pygame.sprite.Sprite):
 		self.width = 150
 		self.height = 150
 
-	def renderText(self):
+	def render_text(self):
 		global white, green, blue, black
 
 		self.textFont = self.font.render(self.parentSprite.text, True, black, white)
 		self.textRect = self.textFont.get_rect() 
 		self.textRect.center = (self.x + 80, self.y + 65)
 
-	def updateMovement(self):
+	def update_movement(self):
 		self.x = self.parentSprite.x + self.parentSprite.width
 		self.y = self.parentSprite.y - self.height
