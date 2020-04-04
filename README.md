@@ -18,16 +18,6 @@ pygame.set_game_title("My Game")
 my_sprite = pygame.add_sprite('sprite1.png', 50)
 ```
 
-- Add/Set Sprite's **Costume** 
-```python
-my_sprite = pygame.switch_costume('sprite2.png')
-```
-
-- Set **Background/Backdrop Image** <br/>
-```python
-pygame.change_background_image("background.jpg")
-```
-
 - New **Scene** <br/>
 ```python
 pygame.new_scene()
@@ -63,12 +53,12 @@ my_sprite.go_to(200,100)
 my_sprite.set_direction(100)
 ```
 
-- **Points** toward Mouse
+- Points toward **Mouse**
 ```python
 my_sprite.point_toward_mouse()
 ```
 
-- **Points** toward another Sprite
+- Points toward **another Sprite**
 ```python
 my_sprite.point_toward_sprite(another_sprite)
 ```
@@ -119,4 +109,80 @@ Y = my_sprite.get_y_position()
 - Get **direction**
 ```python
 direction = my_sprite.get_direction()
+```
+
+## Looks
+- Say "Hello!" for 2 seconds
+```python
+# Not Implemented
+```
+
+- Say "Hello!"
+```python
+my_sprite.say("Hello!")
+```
+
+- Think "Hmm...!" for 2 seconds
+```python
+# Not Implemented
+```
+
+- Think "Hmm...!"
+```python
+# Not Implemented
+```
+
+- Switch **costume**
+```python
+my_sprite.switch_costume('costume1.png')
+```
+
+- Next **costume**
+```python
+Not implemented
+```
+
+- Switch **backdrop**
+```python
+pygame.set_background_image('background.jpg')
+```
+
+- Next **backdrop**
+```python
+Not implemented
+```
+
+- Change **size** by 10
+```python
+my_sprite.change_size(10)
+```
+
+- Set **size** to 100
+```python
+my_sprite.set_size(100)
+```
+
+- Change **colour effect** by 25
+```python
+Not implemented
+```
+
+- Set **colour effect** to 0
+```python
+Not implemented
+```
+
+- Clear **graphic effects**
+```python
+Not implemented
+```
+
+- Show **sprite**
+```python
+my_sprite.show()
+```
+
+- Hide **sprite**
+```python
+my_sprite.hide()
 ```
