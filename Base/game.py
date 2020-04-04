@@ -1,31 +1,26 @@
-'''
-	YOUR GAME FILE
-'''
-
 import random
 from manager import *
 
 # Start pygame
-# Set Screen Size 800 x 600
-my_pygame = Pygame(800, 600)
+pygame = Pygame(800, 600)
+pygame.set_game_title("Apple Catcher Game")
+pygame.set_background_image("background.jpg")
 
-
-# Add Sprite & Variable
+# Variable & Sprite
 
 # Start Game
-my_pygame.startGame()
+pygame.start_game()
 
-# Main Game Loop
 done = False
 while not done:
 	# Check User input
-	my_pygame.checkEvent()
-	done = my_pygame.checkQuit()
+	pygame.check_event()
+	done = pygame.check_quit()
 
 	# Program Logic
 
 	# Update All Sprites
-	my_pygame.updateGame()
+	pygame.update_game()
 
 # Quit Game
-my_pygame.quitGame()
+pygame.quit_game()

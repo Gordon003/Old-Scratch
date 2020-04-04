@@ -2,86 +2,82 @@ import random
 from manager import *
 
 # Start pygame
-# Set Screen Size 800 x 600
-my_pygame = Pygame(800, 600)
-my_pygame.setGameTitle("Tank Shooter Game")
-my_pygame.changeBackgroundImage("background.jpg")
+pygame = Pygame(800, 600)
+pygame.set_game_title("Tank Shooter Game")
+pygame.set_background_image("background.jpg")
 
 
 # Add Sprite & Variable
-tank = my_pygame.addSprite('tank.png', 20)
-tank.goTo(0,-200)
+tank = pygame.add_sprite('tank.png', 20)
+tank.go_to(0,-200)
 
-bullet = my_pygame.addSprite('bullet.png', 5)
+bullet = pygame.add_sprite('bullet.png', 5)
 bullet.hide()
-bulletShot = False
-bulletSpeed = 10
+bullet_shot = False
+bullet_speed = 10
 
-alien = my_pygame.addSprite('alien.png', 15)
-alien.setY(250)
-alien.setX(random.randint(-300,300))
+alien = pygame.add_sprite('alien.png', 15)
+alien.set_y(250)
+alien.set_x(random.randint(-300,300))
 alien.show()
-alienSpeed = 3
+alien_speed = 3
 
 # Start Game
-my_pygame.startGame()
+pygame.start_game()
 
-gameOver = False
-
+game_over = False
 score = 0
 
 # Main Game Loop
 done = False
 while not done:
 	# Check User input
-	my_pygame.checkEvent()
-	done = my_pygame.checkQuit()
+	pygame.check_event()
+	done = pygame.check_quit()
 
-	# Programming
-
+	# Game Over
 	if alien.touch(tank):
-		gameOver = True
-
-	if gameOver == True:
-		my_pygame.writeText("Game Over!", 100, 0, 0)
+		game_over = True
+	if game_over:
+		pygame.write_text("Game Over!", 100, 0, 0)
 
 	# Point Tank
-	if gameOver == False:
-		tank.pointTowardMouse()
+	if game_over == False:
+		tank.point_toward_mouse()
 
 		# Shoot
-		if my_pygame.checkMouseClicked() and bulletShot == False:
-			bulletShot = True
-			bullet.goTo(tank.getX(), tank.getY())
-			bullet.setDirection(tank.getDirection())
+		if pygame.check_mouse_clicked() and bullet_shot == False:
+			bullet_shot = True
+			bullet.go_to(tank.get_x(), tank.get_y())
+			bullet.set_direction(tank.get_direction())
 			bullet.show()
 
 		# Move Bullet
-		if bulletShot == True:
-			bullet.move(bulletSpeed)
+		if bullet_shot == True:
+			bullet.move(bullet_speed)
 
 			# Bullet touch the edge
-			if bullet.getY() > 300 or abs(bullet.getX()) > 400:
+			if bullet.get_y() > 300 or abs(bullet.get_x()) > 400:
 				bullet.hide()
-				bulletShot = False
+				bullet_shot = False
 
 			# Bullet touch the alien
-			if bullet.touch(alien) and bulletShot == True:
+			if bullet.touch(alien) and bullet_shot == True:
 				score = score + 1
-				alien.goTo(random.randint(-300,300), 250)
+				alien.go_to(random.randint(-300,300), 250)
 				bullet.hide()
-				bulletShot = False
-				alienSpeed = alienSpeed + 0.5
+				bullet_shot = False
+				alien_speed = alien_speed + 0.5
 
 		# Move Alien
-		alien.pointTowardSprite(tank)
-		alien.move(alienSpeed)
+		alien.point_toward_sprite(tank)
+		alien.move(alien_speed)
 
 	# Write Score
-	my_pygame.writeText("Score: " + str(score), 20, 320, 250)
+	pygame.write_text("Score: " + str(score), 20, 320, 250)
 
 	# Update All Sprites
-	my_pygame.updateGame()
+	pygame.update_game()
 
 # Quit Game
-my_pygame.quitGame()
+pygame.quitGame()

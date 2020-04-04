@@ -2,58 +2,76 @@ import random
 from manager import *
 
 # Start pygame
-my_pygame = Pygame(800, 600)
-my_pygame.setGameTitle("Fish Catcher Game")
-my_pygame.changeBackgroundImage("background1.jpg")
+pygame = Pygame(800, 600)
+pygame.set_game_title("Fish Catcher Game")
+pygame.set_background_image("background1.jpg")
 
 # Fish sprite
-fish = my_pygame.addSprite('fish.png', 50)
-fish.goTo(100, 0)
-fishSpeed = 5
+fish = pygame.add_sprite('fish.png', 50)
+fish.go_to(100, 0)
+fish_speed = 5
 fishTimer = 0
 
 # Shark sprite
-shark = my_pygame.addSprite('shark.png', 75)
-shark.goTo(-200,-200)
-sharkSpeed = 10
+shark = pygame.add_sprite('shark.png', 75)
+shark.go_to(-200,-200)
+shark_speed = 10
 
+# Game Loop
 done = False
 while not done:
+	
 	# Check User input
-	my_pygame.checkEvent();
-	done = my_pygame.checkQuit();
+	pygame.check_event();
+	done = pygame.check_quit();
 
 	# Shark going left and right
-	if my_pygame.keyHold(pygame.K_LEFT):
-		shark.changeX(-1 * sharkSpeed)
-	if my_pygame.keyHold(pygame.K_RIGHT):
-		shark.changeX(sharkSpeed)
-	if my_pygame.keyReleased(pygame.K_LEFT) or my_pygame.keyReleased(pygame.K_RIGHT):
-		shark.changeX(0)
+	if pygame.key_hold("left"):
+		shark.change_x(-1 * shark_speed)
+	if pygame.key_hold("right"):
+		shark.change_x(shark_speed)
+	if pygame.key_released("left") or pygame.key_released("right"):
+		shark.change_x(0)
 
 	# Shark going up and down
-	if my_pygame.keyHold(pygame.K_UP):
-		shark.changeY(sharkSpeed)
-	if my_pygame.keyHold(pygame.K_DOWN):
-		shark.changeY(-1 * sharkSpeed)
-	if my_pygame.keyReleased(pygame.K_UP) or my_pygame.keyReleased(pygame.K_DOWN):
-		shark.changeY(0)
+	if pygame.key_hold("up"):
+		shark.change_y(shark_speed)
+	if pygame.key_hold("down"):
+		shark.change_y(-1 * shark_speed)
+	if pygame.key_released("up") or pygame.key_released("down"):
+		shark.change_y(0)
+
+	# Fish going left and right
+	if pygame.key_hold("a"):
+		fish.change_x(-1 * fish_speed)
+	if pygame.key_hold("d"):
+		fish.change_x(fish_speed)
+	if pygame.key_released("a") or pygame.key_released("d"):
+		fish.change_x(0)
+
+	# Fish going up and down
+	if pygame.key_hold("w"):
+		fish.change_y(fish_speed)
+	if pygame.key_hold("s"):
+		fish.change_y(-1 * fish_speed)
+	if pygame.key_released("w") or pygame.key_released("s"):
+		fish.change_y(0)
 
 	# Shark touching the fish
 	if shark.touch(fish):
 		shark.say("I got you")
-		shark.switchCostume('shark2.png')
+		shark.switch_costume("shark2.png")
 	else:
 		shark.say("")
-		shark.switchCostume('shark.png')
+		shark.switch_costume("shark.png")
 
 
 	# Stop on edge
-	shark.stopOnEdge()
-	fish.stopOnEdge()
+	shark.bounce_on_edge()
+	fish.bounce_on_edge()
 
 	# Update All Sprites
-	my_pygame.updateGame();
+	pygame.update_game();
 
 # Quit Game
-my_pygame.quitGame()
+pygame.quit_game()
