@@ -14,6 +14,7 @@ pip install pygame
 
 | Modules    | Links          													|
 | ---------- | :--------------------------------------------------------------: |
+| Motion     | [Link](https://github.com/Gordon003/Scratch-To-Python#basic-game-design-command) 	|
 | Motion     | [Link](https://github.com/Gordon003/Scratch-To-Python#motion) 	|
 | Looks      | [Link](https://github.com/Gordon003/Scratch-To-Python#looks)     |
 | Sound      | [Link](https://github.com/Gordon003/Scratch-To-Python#sound)     |
