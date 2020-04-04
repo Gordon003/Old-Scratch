@@ -5,8 +5,15 @@ Perfect for advanced Scratch students who want to make game in actual programmin
 
 Developed by Gordon since January 2020.
 
+## Requirement
+- **Pygame Library**
+To install Pygame, use Pip (For Windows)
+```python
+pip install pygame
+```
+
 ## Basic Game Design Command
-- **To Compile and Run game**
+- **To Compile and Run game** Run in Command Prompt
 ```python
 python game.py
 ```
@@ -27,7 +34,7 @@ pygame.set_game_title("My Game")
 my_sprite = pygame.add_sprite('sprite1.png', 50)
 ```
 
-- New **Scene** <br/>
+- New **Scene**
 ```python
 pygame.new_scene()
 ```
@@ -55,7 +62,7 @@ my_sprite.turn_right(15)
 my_sprite.turn_left(15)
 ```
 
-- **Go To** specfic position
+- **Go To** position
 ```python
 # Random Position
 my_sprite.go_to_random_position()
@@ -64,9 +71,14 @@ my_sprite.go_to_random_position()
 my_sprite.go_to(200,100)
 ```
 
-- Set **Direction** to 100
+- **Glide** to a position
 ```python
-my_sprite.set_direction(100)
+# Not implemented
+```
+
+- Set **Direction** to 90
+```python
+my_sprite.set_direction(90)
 ```
 
 - Points toward **Mouse**
@@ -127,15 +139,21 @@ direction = my_sprite.get_direction()
 ```
 
 ## Looks
-- Say "Hello!"
+- **Say** "Hello!"
 ```python
 my_sprite.say("Hello!")
+```
+
+- **Think** "Hmm..."
+```python
+# Not implemented
 ```
 
 - Switch **costume**
 ```python
 my_sprite.switch_costume('costume1.png')
 ```
+
 
 - Switch **backdrop**
 ```python
@@ -152,6 +170,11 @@ my_sprite.change_size(10)
 my_sprite.set_size(100)
 ```
 
+- **Change/Set** Colour Effect
+```python
+# Not implemented
+```
+
 - Show **sprite**
 ```python
 my_sprite.show()
@@ -162,17 +185,50 @@ my_sprite.show()
 my_sprite.hide()
 ```
 
+- **Go Forward/Backward** 1 layer
+```python
+# Not implemented
+```
+
+- **Get Costume Number/Name**
+```python
+# Not implemented
+```
+
+- **Get Backdrop Number/Name**
+```python
+# Not implemented
+```
+
+- **Get Sprite Size**
+```python
+# Not implemented
+```
+
 ## Sound
 - Start **sound** 'Meow
 ```python
+# Sound effect - play once
 pygame.play_sound_effect('effect1.mp3')
 
+# Background music - play forever till stop
 pygame.play_background_music('music1.mp3')
 ```
 
 - Stop all **sound**
 ```
 pygame.stop_sound()
+```
+
+- **Change/Set Volume**
+```python
+# Not implemented
+```
+
+## Control
+- **Wait**
+```python
+# Not implemented
 ```
 
 ## Sensing
@@ -190,6 +246,16 @@ result = my_sprite.mouve_clicked_on_sprite()
 ```python
 # Return True/False
 result = my_sprite.touch(another_sprite)
+```
+
+- **Touch Colour**
+```python
+# Not implemented
+```
+
+- Find **Distance to Mouse/Another Sprite**
+```python
+# Not implemented
 ```
 
 - **Key 'Space'** hold/pressed/released
