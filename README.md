@@ -12,13 +12,13 @@ To install Pygame, use Pip (For Windows)
 pip install pygame
 ```
 
-| Modules        | Links           |
-| ------------- |:-------------:|
-| Motion     | [GitHub Pages](https://github.com/Gordon003/Scratch-To-Python#motion) |
-| Looks      | [GitHub Pages](https://github.com/Gordon003/Scratch-To-Python#looks)      |
-| Sound      | [GitHub Pages](https://github.com/Gordon003/Scratch-To-Python#sound)      |
-| Control    | [GitHub Pages](https://github.com/Gordon003/Scratch-To-Python#control)      |
-| Sensing    | [GitHub Pages](https://github.com/Gordon003/Scratch-To-Python#sensing)      |
+| Modules    | Links          													|
+| ---------- | :--------------------------------------------------------------: |
+| Motion     | [Link](https://github.com/Gordon003/Scratch-To-Python#motion) 	|
+| Looks      | [Link](https://github.com/Gordon003/Scratch-To-Python#looks)     |
+| Sound      | [Link](https://github.com/Gordon003/Scratch-To-Python#sound)     |
+| Control    | [Link](https://github.com/Gordon003/Scratch-To-Python#control)   |
+| Sensing    | [Link](https://github.com/Gordon003/Scratch-To-Python#sensing)   |
 
 ## Basic Game Design Command
 - **To Compile and Run game** Run in Command Prompt
