@@ -122,7 +122,7 @@ my_sprite.set_y(100)
 
 - **If on edge, bounce**
 ```python
-my_sprite.stop_on_edge()
+my_sprite.bounce_on_edge()
 ```
 
 - Set **Rotation Style**
